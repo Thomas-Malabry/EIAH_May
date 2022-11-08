@@ -1,5 +1,5 @@
 import json
-
+import codecs
 
 #Parser de données dans un fichier sql
 class parserSQL():
@@ -72,7 +72,7 @@ class parserSQL():
     # headers : nom des colonnes
     # data : données par table
     def ecriture(self, tables, headers, data):
-        f = open(self.cible, "w")
+        f = codecs.open(self.cible, "w",  "utf-8")
 
         result = {}
 
@@ -91,5 +91,5 @@ class parserSQL():
                     result[key][-1][colonnes[ind]] = d[ind]
                     ind +=1
 
-        f.write(json.dumps(result, indent=4))
+        f.write(json.dumps(result, indent=4,ensure_ascii=False,sort_keys = True))
         f.close()
