@@ -19,7 +19,7 @@ class parserSQL():
 
         self.cible = cible
 
-        f = open(self.filename, "r")
+        f = codecs.open(self.filename, "r",  "utf-8")
 
         tables = {}
         ind = 0
@@ -53,7 +53,7 @@ class parserSQL():
                     #on récupère l'info pour stocker les données au bon endroit
                     else:
                         courant = tables[tablename]
-                
+                #on récupère les données insérées
                 elif line[0] == "(":
                     lineR = line.split("(", 1)[1]
                     lineR = lineR.replace("),\n", "")
